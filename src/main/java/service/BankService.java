@@ -1,15 +1,18 @@
-package Service;
+package service;
 
-import Entity.BankEntity;
-import Entity.CustomerEntity;
-import Repository.BankDetails;
+import entity.BankEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import repository.BankDetails;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Service
 public class BankService {
-    BankDetails bankDetails = new BankDetails();
-    List<BankEntity> bankInfo = bankDetails.getBanksList();
+    @Autowired
+    BankDetails bankDetails;
+
+    List<BankEntity> bankInfo = null;//bankDetails.getBanksList();
     public List<Integer> getCustomersByBankName(String bankName) {
         return bankInfo.stream().filter(entity -> entity.bankName.equalsIgnoreCase(bankName)).
                 map(BankEntity::getCustomerUniqueId).

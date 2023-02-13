@@ -1,20 +1,21 @@
-package Entity;
+package entity;
 
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "BANK_TABLE")
 public class BankEntity {
-
+    @Column(name="BANK_NAME")
     public String bankName;
+    @Column(name="BANK_ACCOUNT_NUMBER")
     public String bankAccountNumber;
+    @ManyToOne
     public int customerUniqueId;
+    @Column(name="BANK_CITY")
     public String bankCity;
-
-    public BankEntity(String bankName, String bankAccountNumber, int customerUniqueId, String bankCity) {
-        this.bankName = bankName;
-        this.bankAccountNumber = bankAccountNumber;
-        this.customerUniqueId = customerUniqueId;
-        this.bankCity = bankCity;
-    }
 
     public String getBankCity() { return bankCity; }
 

@@ -1,19 +1,21 @@
-package Entity;
+package entity;
+
+import javax.persistence.*;
 
 import java.util.List;
 
+@Entity
+@Table(name = "CUSTOMER_TABLE")
 public class CustomerEntity {
-    public int customerUniqueId;
-    public String customerName;
-    public String customerCity;
-    public List<String> bankAccounts;
 
-    public CustomerEntity(int customerUniqueId, String customerName, String customerCity, List<String> bankAccounts) {
-        this.customerUniqueId = customerUniqueId;
-        this.customerName = customerName;
-        this.customerCity = customerCity;
-        this.bankAccounts = bankAccounts;
-    }
+    @Column(name="CUSTOMER_ID")
+    public int customerUniqueId;
+    @Column(name="CUSTOMER_NAME")
+    public String customerName;
+    @Column(name="CUSTOMER_CITY")
+    public String customerCity;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    public List<String> bankAccounts;
 
     public List<String> getBankAccounts() { return bankAccounts; }
 
