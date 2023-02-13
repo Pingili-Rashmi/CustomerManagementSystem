@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 import java.util.List;
 
@@ -41,5 +41,9 @@ public class CustomerEntity {
 
     public void setCustomerCity(String customerCity) {
         this.customerCity = customerCity;
+    }
+    @Override
+    public String toString(){
+        return this.customerName+" "+this.customerUniqueId;
     }
 }

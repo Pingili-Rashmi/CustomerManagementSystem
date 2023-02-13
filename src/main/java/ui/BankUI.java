@@ -1,23 +1,24 @@
-package UI;
+package ui;
 
-import Entity.CustomerEntity;
-import Service.BankService;
+import service.BankService;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class BankUI {
     BankService bankService = new BankService();
-
     Scanner sc= new Scanner(System.in);
+
     public List<Integer> getCustomersByBankName() {
         System.out.println("Enter Bank Name:");
         String bankName = sc.nextLine();
+        System.out.print("List of customer id's of "+bankName +" are: ");
         return bankService.getCustomersByBankName(bankName);
     }
 
     public List<String> famousBank() {
-        int limit = 100;
+        System.out.println("Enter limit:");
+        int limit = sc.nextInt();
         return bankService.getFamousBanks(limit);
     }
 }

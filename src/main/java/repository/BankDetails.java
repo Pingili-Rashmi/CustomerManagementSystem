@@ -1,7 +1,6 @@
-package Repository;
+package repository;
 
-import Entity.BankEntity;
-import Entity.CustomerEntity;
+import entity.BankEntity;
 
 import java.util.ArrayList;
 import java.util.List;

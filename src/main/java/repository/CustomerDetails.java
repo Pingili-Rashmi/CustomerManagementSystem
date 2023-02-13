@@ -1,6 +1,6 @@
-package Repository;
+package repository;
 
-import Entity.CustomerEntity;
+import entity.CustomerEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ public class CustomerDetails {
     public CustomerDetails()
     {
         customersList.add(new CustomerEntity(1, "Sandeep", "Chennai", new ArrayList<String>(){{
-            add("BKID002"); add("HDFC100"); }}));
+            add("BKID002"); }}));
         customersList.add(new CustomerEntity(2, "Roshan", "Delhi",  new ArrayList<String>(){{
             add("BKID008"); }}));
         customersList.add(new CustomerEntity(3, "Maya", "Mumbai",  new ArrayList<String>(){{

@@ -1,7 +1,7 @@
-package Service;
+package service;
 
-import Entity.CustomerEntity;
-import Repository.CustomerDetails;
+import entity.CustomerEntity;
+import repository.CustomerDetails;
 
 import java.util.List;
 import java.util.Map;
