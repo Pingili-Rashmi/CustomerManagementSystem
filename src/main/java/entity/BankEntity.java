@@ -1,19 +1,15 @@
 package entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "BANK_TABLE")
+@Table(name = "bank")
 public class BankEntity {
+    @Id
+    @Column(name="BANK_ACCOUNT_NO")
+    public String bankAccountNumber;
     @Column(name="BANK_NAME")
     public String bankName;
-    @Column(name="BANK_ACCOUNT_NUMBER")
-    public String bankAccountNumber;
-    @ManyToOne
-    public int customerUniqueId;
     @Column(name="BANK_CITY")
     public String bankCity;
 
@@ -23,14 +19,6 @@ public class BankEntity {
 
     public String getBankName() {
         return bankName;
-    }
-
-    public int getCustomerUniqueId() {
-        return customerUniqueId;
-    }
-
-    public void setCustomerUniqueId(int customerUniqueId) {
-        this.customerUniqueId = customerUniqueId;
     }
 
     public String getBankAccountNumber() {
@@ -43,5 +31,9 @@ public class BankEntity {
 
     public void setBankName(String bankName) {
         this.bankName = bankName;
+    }
+    @Override
+    public String toString(){
+        return bankName+" "+bankAccountNumber;
     }
 }

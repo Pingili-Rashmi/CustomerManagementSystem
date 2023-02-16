@@ -1,25 +1,29 @@
 package service;
 
+import dto.BankDto;
 import entity.BankEntity;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repository.BankDetails;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
 @Service
 public class BankService {
     @Autowired
     BankDetails bankDetails;
+    @Autowired
+    ModelMapper modelMapper;
 
-    List<BankEntity> bankInfo = null;//bankDetails.getBanksList();
-    public List<Integer> getCustomersByBankName(String bankName) {
-        return bankInfo.stream().filter(entity -> entity.bankName.equalsIgnoreCase(bankName)).
-                map(BankEntity::getCustomerUniqueId).
-                collect(Collectors.toList());
-
+    /*public List<Integer> getCustomersByBankName(String bankName) {
+        return bankDetails.getCustomersByBankName(bankName);
     }
     public List<String> getFamousBanks(int limit) {
-        return bankInfo.stream().map(BankEntity::getBankName).distinct().collect(Collectors.toList());
+        return bankDetails.getFamousBanks(limit);
+    }
+*/
+    public List<BankEntity> getAllBanks() {
+        return bankDetails.getAll();
     }
 }

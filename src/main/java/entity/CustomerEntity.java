@@ -5,21 +5,22 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "CUSTOMER_TABLE")
+@Table(name = "customers")
 public class CustomerEntity {
-
+    @Id
     @Column(name="CUSTOMER_ID")
     public int customerUniqueId;
     @Column(name="CUSTOMER_NAME")
     public String customerName;
     @Column(name="CUSTOMER_CITY")
     public String customerCity;
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    public List<String> bankAccounts;
+    @OneToMany(targetEntity = BankEntity.class, cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name="ba_fk",referencedColumnName = "customerUniqueId")
+    public List<BankEntity> bankAccounts;
 
-    public List<String> getBankAccounts() { return bankAccounts; }
+    public List<BankEntity> getBankAccounts() { return bankAccounts; }
 
-    public void setBankAccounts(List<String> bankAccounts) { this.bankAccounts = bankAccounts; }
+    public void setBankAccounts(List<BankEntity> bankAccounts) { this.bankAccounts = bankAccounts; }
 
     public int getCustomerUniqueId() {
         return customerUniqueId;
@@ -43,5 +44,10 @@ public class CustomerEntity {
 
     public void setCustomerCity(String customerCity) {
         this.customerCity = customerCity;
+    }
+
+    @Override
+    public String toString(){
+        return customerUniqueId+" "+customerName;
     }
 }

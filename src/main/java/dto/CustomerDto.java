@@ -1,5 +1,7 @@
 package dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import entity.BankEntity;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -33,14 +35,19 @@ public class CustomerDto {
         this.customerCity = customerCity;
     }
 
-    public List<String> getBankAccounts() {
+    public List<BankEntity> getBankAccounts() {
         return bankAccounts;
     }
 
-    public void setBankAccounts(List<String> bankAccounts) {
+    public void setBankAccounts(List<BankEntity> bankAccounts) {
         this.bankAccounts = bankAccounts;
     }
+    @JsonIgnore
+    public List<BankEntity> bankAccounts;
 
-    public List<String> bankAccounts;
+    @Override
+    public String toString(){
+        return customerUniqueId+" "+customerName;
+    }
 
 }

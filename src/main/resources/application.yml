@@ -1,0 +1,7 @@
+spring.datasource.url: jdbc:postgresql://localhost::6060/customerManagement
+spring.datasource.username: postgresql
+spring.datasource.password: 12345
+spring.jpa.show-sql: true
+spring.jpa.generate-ddl: true
+spring.jpa.hibernate.ddl-auto: update
+spring.datasource.driverClassName: org.postgresql.Driver

@@ -1,5 +1,6 @@
 package controller;
 
+import dto.BankDto;
 import dto.CustomerDto;
 import entity.CustomerEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,24 +13,15 @@ import service.CustomerService;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-@Controller
-@RequestMapping("/customers")
+@RestController
+@RequestMapping("/customer")
 public class CustomerController {
     @Autowired
     CustomerService customerService;
 
-    @GetMapping("/id={customerId}/accountNumbers")
-    public ResponseEntity<List<List<String>>> getCustomerAccountNumbers(@PathVariable(name="customerId") int customerId){
-        return ResponseEntity.ok().body(customerService.getAccountNumbers(customerId));
-    }
-    @GetMapping("/groupBy/city")
-    public ResponseEntity<Map<String,List<CustomerDto>>> groupCustomersByCity() {
-        return ResponseEntity.ok().body(customerService.groupCustomersByCity());
+    @GetMapping()
+    public List<CustomerEntity> getAllCustomerDetails(){
+        return customerService.getCustomers();
     }
 
-    @PostMapping()
-    public ResponseEntity<String> addCustomer(@RequestBody CustomerEntity customerEntity){
-        customerService.addCustomer(customerEntity);
-        return new ResponseEntity<>("Customer Added Succesfully", HttpStatus.CREATED);
-    }
 }

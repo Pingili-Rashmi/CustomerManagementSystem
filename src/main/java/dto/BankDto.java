@@ -1,5 +1,7 @@
 package dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import entity.CustomerEntity;
 import org.springframework.stereotype.Service;
 
 
@@ -7,7 +9,6 @@ import org.springframework.stereotype.Service;
 public class BankDto {
     public String bankName;
     public String bankAccountNumber;
-    public int customerUniqueId;
     public String bankCity;
 
     public String getBankName() {
@@ -26,19 +27,15 @@ public class BankDto {
         this.bankAccountNumber = bankAccountNumber;
     }
 
-    public int getCustomerUniqueId() {
-        return customerUniqueId;
-    }
-
-    public void setCustomerUniqueId(int customerUniqueId) {
-        this.customerUniqueId = customerUniqueId;
-    }
-
     public String getBankCity() {
         return bankCity;
     }
 
     public void setBankCity(String bankCity) {
         this.bankCity = bankCity;
+    }
+    @Override
+    public String toString(){
+        return bankName+" "+bankAccountNumber;
     }
 }
